@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+message SetRequest {
+  string key = 1;
+  string value = 2;
+}
+
+message GetRequest {
+  string key = 1;
+}
+
+message GetResponse {
+  string value = 1;
+}
+
+message Status {
+  bool success = 1;
+}
+
+message Request {
+  oneof op {
+    SetRequest set = 1;
+    GetRequest get = 2;
+  }
+}
+
+message Response {
+  oneof result {
+    GetResponse get = 1;
+    Status status = 2;
+  }
+}
+
